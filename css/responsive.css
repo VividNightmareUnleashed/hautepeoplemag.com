@@ -1,0 +1,34 @@
+/* Responsive Design - Media Queries */
+
+/* Tablet Landscape and below */
+@media (max-width: 968px) {
+    .current-issue-showcase {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+/* Tablet Portrait and below */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero-logo {
+        font-size: 3rem;
+        letter-spacing: 10px;
+    }
+
+    .issues-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .subscription-form {
+        flex-direction: column;
+    }
+}
