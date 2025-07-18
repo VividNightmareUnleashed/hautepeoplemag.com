@@ -235,14 +235,9 @@ nav {
 .issue-cover-image {
     width: 100%;
     height: 650px;
-    background: linear-gradient(135deg, var(--dark-burgundy) 0%, var(--burgundy) 50%, var(--light-burgundy) 100%);
     position: relative;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
+    background: linear-gradient(135deg, var(--dark-burgundy) 0%, var(--burgundy) 50%, var(--light-burgundy) 100%);
 }
 
 .issue-cover-logo {
@@ -606,4 +601,82 @@ footer {
     color: rgba(255, 255, 255, 0.5);
     font-size: 0.8rem;
     letter-spacing: 1px;
+}
+
+/* Order Print indicator for issue cards */
+.issue-card[data-order-url]::after {
+    content: 'ORDER PRINT';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--gold);
+    color: var(--black);
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 3;
+}
+
+.issue-card[data-order-url]:hover::after {
+    opacity: 1;
+}
+
+/* Cover Image Styles */
+.cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.issue-cover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        rgba(0,0,0,0.2) 0%, 
+        rgba(0,0,0,0.4) 50%, 
+        rgba(0,0,0,0.6) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Archive Issue Cards with Cover Images */
+.issue-card[data-cover] .issue-card-cover {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.issue-card[data-cover] .issue-card-cover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        rgba(0,0,0,0.3) 0%, 
+        rgba(0,0,0,0.5) 50%, 
+        rgba(0,0,0,0.7) 100%);
+    z-index: 1;
+}
+
+.issue-card[data-cover] .issue-card-cover > * {
+    position: relative;
+    z-index: 2;
 }

@@ -21,23 +21,28 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Issue card click functionality
-document.querySelectorAll('.issue-card').forEach((card, index) => {
-    card.addEventListener('click', function() {
-        const names = [
-            'Michele Bolton',
-            'Moneeka Sawyer', 
-            'Maxim Ivanchuk',
-            'Gintare Sido',
-            'Nicola Pighi',
-            'James W. Keyes',
-            'Sims Alagan',
-            'Robyn Hills',
-            'Carrie Anne Yu',
-            'Ana Pastor & Armando Coviello'
-        ];
-        alert(`View ${names[index] || 'this'} issue - Feature coming soon!`);
-    });
+// Issue card functionality
+document.querySelectorAll('.issue-card').forEach((card) => {
+    const orderUrl = card.getAttribute('data-order-url');
+    const coverImage = card.getAttribute('data-cover');
+    
+    // Set background image if cover is available
+    if (coverImage) {
+        const cardCover = card.querySelector('.issue-card-cover');
+        if (cardCover) {
+            cardCover.style.backgroundImage = `url('${coverImage}')`;
+        }
+    }
+    
+    if (orderUrl) {
+        // Add click handler only for cards with order URLs
+        card.addEventListener('click', function() {
+            window.open(orderUrl, '_blank');
+        });
+        
+        // Add a subtle indicator that the card is clickable
+        card.title = 'Click to order print copy';
+    }
 });
 
 // Form submission handler
