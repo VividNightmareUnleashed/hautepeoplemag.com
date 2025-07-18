@@ -25,6 +25,7 @@ window.addEventListener('scroll', () => {
 document.querySelectorAll('.issue-card').forEach((card) => {
     const orderUrl = card.getAttribute('data-order-url');
     const coverImage = card.getAttribute('data-cover');
+    const flipbookUrl = card.getAttribute('data-flipbook');
     
     // Set background image if cover is available
     if (coverImage) {
@@ -34,19 +35,17 @@ document.querySelectorAll('.issue-card').forEach((card) => {
         }
     }
     
-    if (orderUrl) {
-        // Add click handler only for cards with order URLs
-        card.addEventListener('click', function() {
-            window.open(orderUrl, '_blank');
+    if (flipbookUrl) {
+        // Add click handler to open flipbook
+        card.addEventListener('click', function(e) {
+            // Don't open flipbook if clicking on action buttons
+            if (!e.target.closest('.issue-card-actions')) {
+                window.open(flipbookUrl, '_blank');
+            }
         });
         
         // Add a subtle indicator that the card is clickable
-        card.title = 'Click to order print copy';
+        card.title = 'Click to read digital edition';
     }
 });
 
-// Form submission handler
-document.querySelector('.subscription-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Thank you for your interest. We will review your application.');
-});
