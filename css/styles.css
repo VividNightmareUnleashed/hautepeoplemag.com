@@ -291,28 +291,6 @@ nav {
     font-style: italic;
 }
 
-.issue-features {
-    margin-bottom: 3rem;
-}
-
-.issue-features h4 {
-    font-size: 1rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    color: var(--burgundy);
-}
-
-.issue-features ul {
-    list-style: none;
-}
-
-.issue-features li {
-    padding: 0.5rem 0;
-    color: var(--gray);
-    font-style: italic;
-}
-
 .issue-actions {
     display: flex;
     gap: 1rem;
