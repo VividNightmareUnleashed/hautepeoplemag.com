@@ -234,10 +234,10 @@ nav {
 
 .issue-cover-image {
     width: 100%;
-    height: 650px;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--dark-burgundy) 0%, var(--burgundy) 50%, var(--light-burgundy) 100%);
+    background: var(--black);
+    line-height: 0;
 }
 
 .issue-cover-logo {
@@ -367,15 +367,11 @@ nav {
 }
 
 .issue-card-cover {
-    height: 450px;
-    background: linear-gradient(135deg, var(--dark-burgundy) 0%, var(--burgundy) 50%, var(--light-burgundy) 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    text-align: center;
-    padding: 2rem;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    background: var(--black);
+    line-height: 0; /* Remove line-height gap */
 }
 
 .issue-card-logo {
@@ -547,11 +543,28 @@ footer {
 /* Cover Image Styles */
 .cover-img {
     width: 100%;
-    height: 100%;
+    height: auto;
+    display: block;
+    vertical-align: middle;
+}
+
+/* Issue Cover Image Styles for Cards */
+.issue-cover-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    vertical-align: middle;
+}
+
+/* Fix for Screenshot PNG covers */
+[data-cover*="Screenshot"] .issue-cover-img {
     object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
+    height: 100%;
+    aspect-ratio: 990/1400; /* Match standard magazine ratio */
+}
+
+[data-cover*="Screenshot"] .issue-card-cover {
+    aspect-ratio: 990/1400; /* Standard magazine ratio */
 }
 
 .issue-cover-overlay {
@@ -575,13 +588,12 @@ footer {
 
 /* Archive Issue Cards with Cover Images */
 .issue-card[data-cover] .issue-card-cover {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     position: relative;
+    overflow: hidden;
+    background-color: var(--black);
 }
 
-.issue-card[data-cover] .issue-card-cover::before {
+.issue-card .issue-card-cover::before {
     content: '';
     position: absolute;
     top: 0;
@@ -589,15 +601,33 @@ footer {
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom, 
-        rgba(0,0,0,0.3) 0%, 
-        rgba(0,0,0,0.5) 50%, 
-        rgba(0,0,0,0.7) 100%);
+        rgba(0,0,0,0) 0%, 
+        rgba(0,0,0,0) 70%, 
+        rgba(0,0,0,0.3) 90%,
+        rgba(0,0,0,0.5) 100%);
     z-index: 1;
+    pointer-events: none;
 }
 
-.issue-card[data-cover] .issue-card-cover > * {
+.issue-card .issue-card-cover > * {
     position: relative;
     z-index: 2;
+}
+
+/* All issue cards now use consistent aspect ratio - removed custom michele-bolton-cover styles */
+
+/* Ensure current issue scales properly */
+@media (max-width: 1200px) {
+    .current-issue .issue-cover {
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .current-issue .issue-cover {
+        max-width: 100%;
+        width: 100%;
+    }
 }
 
 /* Issue Card Action Buttons */

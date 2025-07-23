@@ -1,5 +1,12 @@
 /* Responsive Design - Media Queries */
 
+/* Desktop - Large screens */
+@media (min-width: 1440px) {
+    .issues-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+}
+
 /* Tablet Landscape and below */
 @media (max-width: 968px) {
     .current-issue-showcase {
@@ -10,6 +17,12 @@
     .features-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
+    }
+    
+    /* Issue cards now adapt to image dimensions */
+    
+    .issue-cover {
+        max-width: 400px;
     }
 }
 
@@ -26,9 +39,45 @@
 
     .issues-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
     .subscription-form {
         flex-direction: column;
+    }
+    
+    /* Better mobile scaling for covers */
+    .issue-cover {
+        max-width: 350px;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+    .issues-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .issue-cover {
+        max-width: 100%;
+    }
+    
+    /* Issue cards adapt to image dimensions on mobile */
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .issue-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
     }
 }

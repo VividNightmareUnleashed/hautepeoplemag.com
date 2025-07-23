@@ -23,17 +23,7 @@ window.addEventListener('scroll', () => {
 
 // Issue card functionality
 document.querySelectorAll('.issue-card').forEach((card) => {
-    const orderUrl = card.getAttribute('data-order-url');
-    const coverImage = card.getAttribute('data-cover');
     const flipbookUrl = card.getAttribute('data-flipbook');
-    
-    // Set background image if cover is available
-    if (coverImage) {
-        const cardCover = card.querySelector('.issue-card-cover');
-        if (cardCover) {
-            cardCover.style.backgroundImage = `url('${coverImage}')`;
-        }
-    }
     
     if (flipbookUrl) {
         // Add click handler to open flipbook
